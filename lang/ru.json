@@ -12,6 +12,7 @@
     "nav.login": "Войти",
     "nav.statuses": "Статусы",
     "nav.labels": "Метки",
+    "nav.logout": "Выход",
 
     "login.name": "Имя",
     "login.email": "Email",
