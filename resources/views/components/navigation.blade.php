@@ -15,7 +15,7 @@
             </a>
             @endguest
             @auth
-            <a href="route('logout')" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                 class="px-4 py-2 ml-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">
                 {{ __('nav.logout') }}
             </a>
