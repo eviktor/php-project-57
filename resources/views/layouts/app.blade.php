@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="csrf-param" content="_token" />
 
-    <title>{{ config('app.name', 'Менеджер задач') }}</title>
+    <title>{{ __('Task Manager') }}</title>
 
     <!-- Styles / Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -25,16 +25,16 @@
             <nav class="bg-white border-gray-200 py-2.5 dark:bg-gray-900 shadow-md">
                 <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
                     <a href="/" class="flex items-center">
-                        <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Менеджер задач</span>
+                        <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">{{ __('Task Manager') }}</span>
                     </a>
                     <div class="flex items-center lg:order-2">
                         <a href="/login"
                             class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">
-                            Вход
+                            {{ __('nav.login') }}
                         </a>
                         <a href="/register"
                             class="px-4 py-2 ml-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">
-                            Регистрация
+                            {{ __('nav.register')  }}
                         </a>
                     </div>
 
@@ -42,17 +42,17 @@
                         <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                             <li>
                                 <a href="/tasks" class="block py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700 lg:p-0">
-                                    Задачи
+                                    {{ __('nav.tasks') }}
                                 </a>
                             </li>
                             <li>
                                 <a href="/task_statuses" class="block py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700 lg:p-0">
-                                    Статусы
+                                    {{ __('nav.statuses') }}
                                 </a>
                             </li>
                             <li>
                                 <a href="/labels" class="block py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700 lg:p-0">
-                                    Метки
+                                    {{ __('nav.labels') }}
                                 </a>
                             </li>
                         </ul>

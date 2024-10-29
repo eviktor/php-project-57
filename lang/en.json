@@ -1,0 +1,48 @@
+{
+    "Task Manager": "Task Manager",
+    "Tasks": "Tasks",
+    "Statuses": "Statuses",
+    "Labels": "Labels",
+
+    "welcome.greetings": "Greetings from Hexlet!",
+    "welcome.description": "It's a simple task manager",
+    "welcome.clickme": "Click me",
+
+    "nav.register": "Register",
+    "nav.login": "Log in",
+    "nav.statuses": "Statuses",
+    "nav.labels": "Labels",
+
+    "login.name": "Name",
+    "login.email": "Email",
+    "login.password": "Password",
+    "login.remember": "Remember me",
+    "login.forgot": "Forgot your password?",
+    "login.login": "Log in",
+
+    "reg.name": "Name",
+    "reg.email": "Email",
+    "reg.password": "Password",
+    "reg.confirm": "Confirm Password",
+    "reg.alreadyRegistered": "Already registered?",
+    "reg.register": "Register",
+
+    "confirm.password": "Password",
+    "confirm.confirm": "Confirm",
+
+    "forgot.description": "Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.",
+    "forgot.email": "Email",
+    "forgot.reset": "Email Password Reset Link",
+
+    "reset.email": "Email",
+    "reset.password": "Password",
+    "reset.confirm": "Confirm Password",
+    "reset.reset": "Reset Password",
+
+    "verify.thanks": "Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn't receive the email, we will gladly send you another.",
+    "verify.description": "A new verification link has been sent to the email address you provided during registration.",
+    "verify.resend": "Resend Verification Email",
+    "verify.logout": "Log Out",
+
+    "guest.alert": "Something went wrong:"
+}

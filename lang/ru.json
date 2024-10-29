@@ -1,0 +1,48 @@
+{
+    "Task Manager": "Менеджер задач",
+    "Tasks": "Задачи",
+    "Statuses": "Статусы",
+    "Labels": "Метки",
+
+    "welcome.greetings": "Привет от Хекслета!",
+    "welcome.description": "Это простой менеджер задач на Laravel",
+    "welcome.clickme": "Нажми меня",
+
+    "nav.register": "Регистрация",
+    "nav.login": "Войти",
+    "nav.statuses": "Статусы",
+    "nav.labels": "Метки",
+
+    "login.name": "Имя",
+    "login.email": "Email",
+    "login.password": "Пароль",
+    "login.remember": "Запомнить меня",
+    "login.forgot": "Забыли пароль?",
+    "login.login": "Войти",
+
+    "reg.name": "Имя",
+    "reg.email": "Email",
+    "reg.password": "Пароль",
+    "reg.confirm": "Подтверждение",
+    "reg.alreadyRegistered": "Уже зарегистрированы?",
+    "reg.register": "Зарегистрировать",
+
+    "confirm.password": "Пароль",
+    "confirm.confirm": "?Подтвердить",
+
+    "forgot.description": " ",
+    "forgot.email": "Email",
+    "forgot.reset": "Сбросить пароль",
+
+    "reset.email": "Email",
+    "reset.password": "Пароль",
+    "reset.confirm": "?Подтвердить",
+    "reset.reset": "?Сбросить пароль",
+
+    "verify.thanks": " ",
+    "verify.description": " ",
+    "verify.resend": "?Отправить повторно",
+    "verify.logout": "?Выйти",
+
+    "guest.alert": "Упс! Что-то пошло не так:"
+}
