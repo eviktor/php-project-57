@@ -12,7 +12,9 @@ class TaskStatusController extends Controller
      */
     public function index()
     {
-        //
+        $statuses = TaskStatus::paginate();
+
+        return view('task-status.index', compact('statuses'));
     }
 
     /**
@@ -34,7 +36,7 @@ class TaskStatusController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TaskStatus $taskStatus)
+    public function show(TaskStatus $status)
     {
         //
     }
@@ -42,7 +44,7 @@ class TaskStatusController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TaskStatus $taskStatus)
+    public function edit(TaskStatus $status)
     {
         //
     }
@@ -50,7 +52,7 @@ class TaskStatusController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TaskStatus $taskStatus)
+    public function update(Request $request, TaskStatus $status)
     {
         //
     }
@@ -58,7 +60,7 @@ class TaskStatusController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TaskStatus $taskStatus)
+    public function destroy(TaskStatus $status)
     {
         //
     }
