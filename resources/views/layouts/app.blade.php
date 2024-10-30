@@ -25,9 +25,7 @@
             <x-navigation />
         </header>
 
-        <section class="bg-white dark:bg-gray-900">
-            @yield('content')
-        </section>
+        @yield('content')
     </div>
 </body>
 
