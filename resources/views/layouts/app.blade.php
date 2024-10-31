@@ -25,7 +25,9 @@
             <x-navigation />
         </header>
 
-        @yield('content')
+        <section class="{{ $contentClass ?? "px-4 pt-4" }}">
+            @yield('content')
+        </section>
     </div>
 </body>
 

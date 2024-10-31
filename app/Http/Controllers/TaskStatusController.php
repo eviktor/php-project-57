@@ -23,7 +23,8 @@ class TaskStatusController extends Controller
      */
     public function create()
     {
-        //
+        $status = new TaskStatus();
+        return view('task-status.create', compact('status'));
     }
 
     /**
@@ -31,38 +32,56 @@ class TaskStatusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|unique:task_statuses'
+        ]);
+
+        $status = new TaskStatus($validatedData);
+        $status->save();
+        return redirect()
+            ->route('task_statuses.index')
+            ->with('success', __('Task status created successfully'));
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(TaskStatus $status)
+    public function show(TaskStatus $task_status)
     {
-        //
-    }
+        return view('task-status.show', compact('task_status'));    }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TaskStatus $status)
+    public function edit(TaskStatus $task_status)
     {
-        //
+        return view('task-status.edit', compact('task_status'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TaskStatus $status)
+    public function update(Request $request, TaskStatus $task_status)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|unique:task_statuses'
+        ]);
+
+        $task_status->fill($validatedData);
+        $task_status->save();
+        return redirect()
+            ->route('task_statuses.index')
+            ->with('success', __('Task status updated successfully'));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TaskStatus $status)
+    public function destroy(TaskStatus $task_status)
     {
-        //
+        $task_status->delete();
+        return redirect()
+            ->route('task_statuses.index')
+            ->with('success', __('Task status removed successfully'));
     }
 }
