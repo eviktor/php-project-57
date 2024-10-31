@@ -45,7 +45,7 @@
             </a>
 
             <x-primary-button class="ms-4">
-                {{ __('reg.Register') }}
+                {{ __('views.auth.register.register') }}
             </x-primary-button>
         </div>
     </form>
