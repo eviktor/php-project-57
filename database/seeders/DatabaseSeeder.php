@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\TaskStatus;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -17,7 +18,17 @@ class DatabaseSeeder extends Seeder
 
         User::factory()->create([
             'name' => 'Test User',
-            'email' => 'test@example.com',
+            'email' => 'test@example.com'
         ]);
+
+        TaskStatus::factory()
+            ->count(4)
+            ->sequence(
+                ['name' => 'New'],
+                ['name' => 'In Progress'],
+                ['name' => 'In Testing'],
+                ['name' => 'Complete'],
+            )
+            ->create();
     }
 }
