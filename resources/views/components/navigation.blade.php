@@ -7,17 +7,17 @@
             @guest
             <a href="{{ route('login') }}"
                 class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">
-                {{ __('nav.login') }}
+                {{ __('Log in') }}
             </a>
             <a href="{{ route('register') }}"
                 class="px-4 py-2 ml-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">
-                {{ __('nav.register')  }}
+                {{ __('Register')  }}
             </a>
             @endguest
             @auth
             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                 class="px-4 py-2 ml-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">
-                {{ __('nav.logout') }}
+                {{ __('Log out') }}
             </a>
             <form id="logout-form" method="POST" action="{{ route('logout') }}" class="hidden">
                 @csrf
@@ -30,18 +30,18 @@
             <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                 {{-- <li>
                     <a href="/tasks" class="block py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700 lg:p-0">
-                        {{ __('nav.tasks') }}
+                        {{ __('Tasks') }}
                     </a>
                 </li> --}}
                 <li>
                     <a href="/task_statuses"
                         class="px-4 py-2 ml-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">
-                        {{ __('nav.statuses') }}
+                        {{ __('Statuses') }}
                     </a>
                 </li>
                 {{-- <li>
                     <a href="/labels" class="block py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700 lg:p-0">
-                        {{ __('nav.labels') }}
+                        {{ __('Labels') }}
                     </a>
                 </li> --}}
             </ul>

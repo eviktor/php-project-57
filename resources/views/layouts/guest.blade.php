@@ -20,7 +20,7 @@
                 <div class="w-full px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-md sm:rounded-lg">
                     @if (count($errors) > 0)
                         <div class="font-medium text-red-600">
-                            {{ __('guest.alert') }}
+                            {{ __('Something went wrong:') }}
                         </div>
                     @endif
                     <h2 class="text-center"><a href="/">{{ __('Task Manager') }}</a></h2>

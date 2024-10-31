@@ -8,7 +8,7 @@
 
         <!-- Password -->
         <div>
-            <x-input-label for="password" :value="__('confirm.password')" />
+            <x-input-label for="password" :value="__('Password')" />
 
             <x-text-input id="password" class="block w-full mt-1"
                             type="password"
@@ -20,7 +20,7 @@
 
         <div class="flex justify-end mt-4">
             <x-primary-button>
-                {{ __('confirm.confirm') }}
+                {{ __('Confirm') }}
             </x-primary-button>
         </div>
     </form>
