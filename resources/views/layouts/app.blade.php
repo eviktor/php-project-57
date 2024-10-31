@@ -21,7 +21,7 @@
 
 <body>
     <div id="app">
-        <header class="fixed w-full">
+        <header class="w-full">
             <x-navigation />
         </header>
 
