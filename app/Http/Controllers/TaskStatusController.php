@@ -10,11 +10,12 @@ class TaskStatusController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $statuses = TaskStatus::paginate();
+        $inputName = $request->input('name');
 
-        return view('task-status.index', compact('statuses'));
+        return view('task-status.index', compact('statuses', 'inputName'));
     }
 
     /**
