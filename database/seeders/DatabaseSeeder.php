@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Task;
 use App\Models\TaskStatus;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -14,12 +15,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
+        $userId =User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com'
-        ]);
+        ])->id;
+
+        User::factory(10)->create();
 
         TaskStatus::factory()
             ->count(4)
@@ -30,5 +31,9 @@ class DatabaseSeeder extends Seeder
                 ['name' => 'Complete'],
             )
             ->create();
+
+        Task::factory()->count(10)->create([
+            'created_by_id' => $userId
+        ]);
     }
 }
