@@ -15,32 +15,28 @@
     </div>
 
     <!-- Table responsive wrapper -->
-    <div class="mt-2 overflow-x-auto bg-white">
+    <div class="mt-2">
         <!-- Table -->
-        <table class="min-w-full text-sm text-left whitespace-nowrap">
+        <table class="index">
             <!-- Table head -->
-            <thead class="tracking-wider uppercase border-b-2 bg-neutral-50">
+            <thead>
                 <tr>
-                    <th scope="col" class="px-6 py-4">@lang('models.task_status.id')</th>
-                    <th scope="col" class="px-6 py-4">@lang('models.task_status.name')</th>
-                    <th scope="col" class="px-6 py-4">{{ __('Actions') }}</th>
+                    <th scope="col">@lang('models.task_status.id')</th>
+                    <th scope="col">@lang('models.task_status.name')</th>
+                    <th scope="col">{{ __('Actions') }}</th>
                 </tr>
             </thead>
             <!-- Table body -->
             <tbody>
                 @foreach($statuses as $status)
-                    @if($loop->odd)
-                        <tr class="border-b hover:bg-neutral-100">
-                    @else
-                        <tr class="border-b hover:bg-neutral-100 bg-neutral-50">
-                    @endif
-                        <td class="px-6 py-4">{{$status->id}}</td>
-                        <th scope="row" class="px-6 py-4">
+                    <tr>
+                        <td>{{$status->id}}</td>
+                        <th scope="row">
                             <a class="no-underline" href="{{route('task_statuses.show', $status->id)}}">
                                 {{ __($status->name) }}
                             </a>
                         </th>
-                        <td class="px-6 py-4">
+                        <td>
                             <a class="no-underline" href="{{route('task_statuses.edit', $status->id)}}">
                                 {{ __('Edit') }}
                             </a>
