@@ -23,7 +23,7 @@
                 <tr>
                     <th scope="col">@lang('models.task.id')</th>
                     <th scope="col">@lang('models.task.name')</th>
-                    <th scope="col" class="w-1/4">@lang('models.task.description')</th>
+                    {{-- <th scope="col">@lang('models.task.description')</th> --}}
                     <th scope="col">@lang('models.task.status')</th>
                     <th scope="col">@lang('models.task.created_by')</th>
                     <th scope="col">@lang('models.task.assigned_to')</th>
@@ -40,7 +40,7 @@
                                 {{ __($task->name) }}
                             </a>
                         </th>
-                        <td scope="row">{{ __($task->description) }}</td>
+                        {{-- <td scope="row">{{ Str::limit(__($task->description), 100) }}</td> --}}
                         <td scope="row" class="whitespace-nowrap">{{ __($task->status->name) }}</td>
                         <td scope="row">{{ $task->created_by->name }}</td>
                         <td scope="row">{{ $task->assigned_to?->name }}</td>

@@ -10,7 +10,7 @@ return [
         'name' => 'Название',
         'description' => 'Описание',
         'status' => 'Статус',
-        'assigned_to' => 'Назначена на',
+        'assigned_to' => 'Назначена',
         'created_by' => 'Создана'
     ]
 ];
