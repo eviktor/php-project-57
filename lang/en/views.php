@@ -5,5 +5,8 @@ return [
         'register' => [
             'register' => 'Register'
         ]
+    ],
+    'tasks' => [
+        'create' => 'Create new',
     ]
 ];

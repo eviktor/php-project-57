@@ -3,16 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
-use Request;
+use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $tasks = Task::paginate();
+        $inputName = $request->input('name');
+
+        return view('task.index', compact('tasks', 'inputName'));
     }
 
     /**
@@ -20,7 +23,9 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        $user = auth()->user();
+        $task = $user->tasks()->make();
+        return view('task.create', compact('task'));
     }
 
     /**
@@ -28,7 +33,19 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'description' => '',
+            'status_id' => 'integer|required',
+            'assigned_to_id' => '',
+        ]);
+
+        $user = auth()->user();
+        $task = $user->tasks()->make($validatedData);
+        $task->save();
+        return redirect()
+            ->route('tasks.index')
+            ->with('success', __('Task created successfully'));
     }
 
     /**
@@ -36,7 +53,7 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        //
+        return view('task.show', compact('task'));
     }
 
     /**
@@ -44,7 +61,7 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        //
+        return view('task.edit', compact('task'));
     }
 
     /**
@@ -52,7 +69,18 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'description' => '',
+            'status_id' => 'integer|required',
+            'assigned_to_id' => '',
+        ]);
+
+        $task->fill($validatedData);
+        $task->save();
+        return redirect()
+            ->route('tasks.index')
+            ->with('success', __('Task updated successfully'));
     }
 
     /**
@@ -60,6 +88,9 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        $task->delete();
+        return redirect()
+            ->route('tasks.index')
+            ->with('success', __('Task removed successfully'));
     }
 }

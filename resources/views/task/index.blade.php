@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>{{ __("Statuses") }}</h1>
+    <h1>{{ __("Tasks") }}</h1>
     <div class="mt-2 ml-1">
-        <a class="no-underline" href="{{ route('task_statuses.create') }}">
-            {{ __('Create new') }}
+        <a class="no-underline" href="{{ route('tasks.create') }}">
+            {{ __('views.tasks.create') }}
         </a>
     </div>
     <div class="hidden mt-2">
-        {{  html()->form('GET', route('task_statuses.index'))->open() }}
+        {{  html()->form('GET', route('tasks.index'))->open() }}
                 {{  html()->input('text', 'name', $inputName) }}
                 {{  html()->submit('Search') }}
         {{ html()->form()->close() }}
@@ -21,26 +21,34 @@
             <!-- Table head -->
             <thead>
                 <tr>
-                    <th scope="col">@lang('models.task_status.id')</th>
-                    <th scope="col">@lang('models.task_status.name')</th>
+                    <th scope="col">@lang('models.task.id')</th>
+                    <th scope="col">@lang('models.task.name')</th>
+                    <th scope="col" class="w-1/4">@lang('models.task.description')</th>
+                    <th scope="col">@lang('models.task.status')</th>
+                    <th scope="col">@lang('models.task.created_by')</th>
+                    <th scope="col">@lang('models.task.assigned_to')</th>
                     <th scope="col">{{ __('Actions') }}</th>
                 </tr>
             </thead>
             <!-- Table body -->
             <tbody>
-                @foreach($statuses as $status)
+                @foreach($tasks as $task)
                     <tr>
-                        <td>{{$status->id}}</td>
+                        <td>{{$task->id}}</td>
                         <th scope="row">
-                            <a class="no-underline" href="{{route('task_statuses.show', $status->id)}}">
-                                {{ __($status->name) }}
+                            <a class="no-underline" href="{{route('tasks.show', $task->id)}}">
+                                {{ __($task->name) }}
                             </a>
                         </th>
+                        <td scope="row">{{ __($task->description) }}</td>
+                        <td scope="row" class="whitespace-nowrap">{{ __($task->status->name) }}</td>
+                        <td scope="row">{{ $task->created_by->name }}</td>
+                        <td scope="row">{{ $task->assigned_to?->name }}</td>
                         <td>
-                            <a class="no-underline" href="{{route('task_statuses.edit', $status->id)}}">
+                            <a class="no-underline" href="{{route('tasks.edit', $task->id)}}">
                                 {{ __('Edit') }}
                             </a>
-                            <a class="text-red-500 no-underline" href="{{route('task_statuses.destroy', $status->id)}}" data-confirm="{{ __('Are you sure?') }}" data-method="delete">
+                            <a class="text-red-500 no-underline" href="{{route('tasks.destroy', $task->id)}}" data-confirm="{{ __('Are you sure?') }}" data-method="delete">
                                 {{ __('Delete') }}
                             </a>
                         </td>
@@ -50,7 +58,7 @@
         </table>
 
         <div class="mt-2">
-            {{$statuses->links()}}
+            {{$tasks->links()}}
         </div>
 
         {{-- <nav class="flex items-center justify-between mt-5 text-sm" aria-label="Page navigation example">
