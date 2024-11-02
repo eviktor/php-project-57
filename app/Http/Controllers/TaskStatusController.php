@@ -12,7 +12,7 @@ class TaskStatusController extends Controller
      */
     public function index(Request $request)
     {
-        $statuses = TaskStatus::paginate();
+        $statuses = TaskStatus::orderBy('id')->paginate();
         $inputName = $request->input('name');
 
         return view('task-status.index', compact('statuses', 'inputName'));
