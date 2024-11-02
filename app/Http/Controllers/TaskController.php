@@ -88,11 +88,11 @@ class TaskController extends Controller
     {
         if ($user = auth()->user()->id !== $task->created_by_id) {
             flash(__('Only the creator of the task can delete it'), 'error');
-            return redirect()->route('tasks.index');
+        } else {
+            $task->delete();
+            flash(__('Task removed successfully'), 'success');
         }
 
-        $task->delete();
-        flash(__('Task removed successfully'), 'success');
         return redirect()->route('tasks.index');
     }
 }

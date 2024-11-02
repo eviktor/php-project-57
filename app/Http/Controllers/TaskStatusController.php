@@ -77,8 +77,13 @@ class TaskStatusController extends Controller
      */
     public function destroy(TaskStatus $task_status)
     {
-        $task_status->delete();
-        flash(__('Task status removed successfully'), 'success');
+        if ($task_status->tasks()->exists()) {
+            flash(__('Cannot delete status'), 'error');
+        } else {
+            $task_status->delete();
+            flash(__('Task status removed successfully'), 'success');
+        }
+
         return redirect()->route('task_statuses.index');
     }
 }
