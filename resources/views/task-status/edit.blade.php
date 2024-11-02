@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('header')
-    {{ __('Status') }}
+    {{ __('Edit Status') }}
 @endsection
 
 @section('content')

@@ -3,14 +3,15 @@
 return [
     'task_status' => [
         'id' => 'ID',
-        'name' => 'Название'
+        'name' => 'Название',
+        'created_at' => 'Дата создания',
     ],
     'task' => [
         'id' => 'ID',
-        'name' => 'Название',
+        'name' => 'Имя',
         'description' => 'Описание',
         'status' => 'Статус',
-        'assigned_to' => 'Назначена',
-        'created_by' => 'Создана'
+        'assigned_to' => 'Исполнитель',
+        'created_by' => 'Автор'
     ]
 ];

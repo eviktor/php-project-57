@@ -37,27 +37,31 @@
 
     "Something went wrong:": "Упс! Что-то пошло не так:",
 
-        "Create": "Создать",
-    "Edit": "Редактировать",
+    "Edit": "Изменить",
     "Update": "Обновить",
     "Delete": "Удалить",
-        "Show": "Показать",
-        "Close": "Закрыть",
-    "Create new": "Создать новый",
-    "Save": "Сохранить",
+    "Save": "Создать",
     "Are you sure?": "Вы уверены?",
+
+    "Create Task": "Создать задачу",
+    "Edit Task": "Изменение задачи",
+    "View Task": "Просмотр задачи",
+
+    "Create Status": "Создать статус",
+    "Edit Status": "Изменение статуса",
+    "View Status": "Просмотр статуса",
 
     "Actions": "Действия",
 
     "Task created successfully": "Задача успешно создана",
-    "Task updated successfully": "Задача успешно обновлена",
+    "Task updated successfully": "Задача успешно изменена",
     "Only the creator of the task can delete it": "Только создатель задачи может удалить ее",
     "Task removed successfully": "Задача успешно удалена",
 
     "Task status created successfully": "Статус успешно создан",
-    "Task status updated successfully": "Статус успешно обновлен",
+    "Task status updated successfully": "Статус успешно изменён",
     "Cannot delete status": "Не удалось удалить статус",
-    "Task status removed successfully": "Статус успешно удален",
+    "Task status removed successfully": "Статус успешно удалён",
 
     "New": "Новый",
     "In Progress": "В работе",

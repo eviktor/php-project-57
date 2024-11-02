@@ -7,7 +7,7 @@
 @section('content')
     <div class="mt-2 ml-1">
         <a class="no-underline" href="{{ route('task_statuses.create') }}">
-            {{ __('Create new') }}
+            {{ __('Create Status') }}
         </a>
     </div>
     <div class="hidden mt-2">
@@ -26,6 +26,7 @@
                 <tr>
                     <th scope="col">@lang('models.task_status.id')</th>
                     <th scope="col">@lang('models.task_status.name')</th>
+                    <th scope="col">@lang('models.task_status.created_at')</th>
                     <th scope="col">{{ __('Actions') }}</th>
                 </tr>
             </thead>
@@ -40,11 +41,14 @@
                             </a>
                         </th>
                         <td>
-                            <a class="no-underline" href="{{route('task_statuses.edit', $status->id)}}">
-                                {{ __('Edit') }}
-                            </a>
+                            {{ __($status->created_at->format('Y-m-d')) }}
+                        </td>
+                        <td>
                             <a class="text-red-500 no-underline" href="{{route('task_statuses.destroy', $status->id)}}" data-confirm="{{ __('Are you sure?') }}" data-method="delete">
                                 {{ __('Delete') }}
+                            </a>
+                            <a class="pl-1 text-blue-500 no-underline" href="{{route('task_statuses.edit', $status->id)}}">
+                                {{ __('Edit') }}
                             </a>
                         </td>
                     </tr>

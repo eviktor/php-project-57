@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('header')
-    {{ __('Task') }}
+    {{ __('View Task') }}
 @endsection
 
 @section('content')
