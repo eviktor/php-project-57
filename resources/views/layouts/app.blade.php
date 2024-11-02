@@ -29,7 +29,7 @@
             @if (flash()->message)
                 <x-flash-message type="{{ flash()->class }}" message="{{ flash()->message }}" />
             @endif
-            @hasSection('header'))
+            @hasSection('header')
                 <h1 class="mb-2 text-center">
                     @yield('header')
                 </h1>

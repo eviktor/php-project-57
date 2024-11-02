@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
+@section('header')
+    {{ __('Tasks') }}
+@endsection
+
 @section('content')
-    <h1 class="text-center">{{ __("Tasks") }}</h1>
     <div class="mt-2 ml-1">
         <a class="no-underline" href="{{ route('tasks.create') }}">
             {{ __('views.tasks.create') }}

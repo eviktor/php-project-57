@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
-@section('content')
-    <h1 class="mb-2 text-center">{{ __('Task') }}</h1>
+@section('header')
+    {{ __('Task') }}
+@endsection
 
+@section('content')
     <p class="pl-1">
         <span class="font-bold">{{ __('models.task.name') }}:</span> {{ $task->name }}
     </p>
