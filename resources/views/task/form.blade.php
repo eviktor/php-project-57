@@ -23,4 +23,10 @@
     {{  html()->select('assigned_to_id')
             ->options(\App\Models\User::all()->pluck('name', 'id')->prepend('', ''))
             ->value($task->assigned_to_id ?? '') }}
+
+    {{  html()->label(__('models.task.labels'), 'labels[]') }}
+    {{  html()->multiselect('labels[]')
+            ->options(\App\Models\Label::all()->pluck('name', 'id'))
+            ->value($task->labels->pluck('id')->toArray()) }}
+
 </div>

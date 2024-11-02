@@ -26,6 +26,7 @@
                 <tr>
                     <th scope="col">@lang('models.label.id')</th>
                     <th scope="col">@lang('models.label.name')</th>
+                    <th scope="col">@lang('models.label.description')</th>
                     <th scope="col">@lang('models.label.created_at')</th>
                     <th scope="col">{{ __('Actions') }}</th>
                 </tr>
@@ -40,9 +41,8 @@
                                 {{ __($label->name) }}
                             </a>
                         </th>
-                        <td>
-                            {{ __($label->created_at->format('Y-m-d')) }}
-                        </td>
+                        <td>{{ Str::limit($label->description, 50) }}</td>
+                        <td>{{ $label->created_at->format('Y-m-d') }}</td>
                         <td>
                             <a class="text-red-500 no-underline" href="{{route('labels.destroy', $label->id)}}" data-confirm="{{ __('Are you sure?') }}" data-method="delete">
                                 {{ __('Delete') }}

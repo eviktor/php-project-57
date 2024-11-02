@@ -12,7 +12,8 @@ return [
         'description' => 'Описание',
         'status' => 'Статус',
         'assigned_to' => 'Исполнитель',
-        'created_by' => 'Автор'
+        'created_by' => 'Автор',
+        'labels' => 'Метки',
     ],
     'label' => [
         'id' => 'ID',

@@ -38,11 +38,15 @@ class TaskController extends Controller
             'description' => '',
             'status_id' => 'integer|required',
             'assigned_to_id' => '',
+            'labels' => 'array',
         ]);
 
         $user = auth()->user();
         $task = $user->tasks()->make($validatedData);
         $task->save();
+
+        $task->labels()->sync($validatedData['labels'] ?? []);
+
         flash(__('Task created successfully'), 'success');
         return redirect()->route('tasks.index');
     }
@@ -73,10 +77,14 @@ class TaskController extends Controller
             'description' => '',
             'status_id' => 'integer|required',
             'assigned_to_id' => '',
+            'labels' => 'array',
         ]);
 
         $task->fill($validatedData);
         $task->save();
+
+        $task->labels()->sync($validatedData['labels'] ?? []);
+
         flash(__('Task updated successfully'), 'success');
         return redirect()->route('tasks.index');
     }

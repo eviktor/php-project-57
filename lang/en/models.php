@@ -11,7 +11,8 @@ return [
         'description' => 'Description',
         'status' => 'Status',
         'assigned_to' => 'Assigned To',
-        'created_by' => 'Created By'
+        'created_by' => 'Created By',
+        'labels' => 'Labels',
     ],
     'label' => [
         'id' => 'ID',
