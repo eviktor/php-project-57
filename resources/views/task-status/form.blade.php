@@ -8,6 +8,6 @@
     </div>
 @endif
 <div class="mb-3">
-    {{  html()->label(__('models.task_status.name'), 'name')->class('form-label') }}
-    {{  html()->input('text', 'name')->class('form-control') }}
+    {{  html()->label(__('models.task_status.name'), 'name') }}
+    {{  html()->input('text', 'name') }}
 </div>

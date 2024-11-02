@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>{{ __("Statuses") }}</h1>
+    <h1 class="mb-2 text-center">{{ __("Statuses") }}</h1>
     <div class="mt-2 ml-1">
         <a class="no-underline" href="{{ route('task_statuses.create') }}">
             {{ __('Create new') }}

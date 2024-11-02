@@ -2,35 +2,78 @@
 @tailwind components;
 @tailwind utilities;
 
-h1 {
-    font-size: 2rem
+body {
+    @apply text-black bg-gray-100 dark:text-gray-50;
 }
 
-h2 {
-    font-size: 2rem
+h1, h2 {
+    @apply text-3xl;
+}
+
+section.main {
+    @apply px-4 pt-4 pb-8 bg-white dark:bg-gray-600;
 }
 
 div.index-container {
-    @apply overflow-x-auto bg-white;
+    @apply overflow-x-auto bg-gray-100;
 }
-
 table.index {
     /* @apply min-w-full text-sm text-left whitespace-nowrap */
-    @apply min-w-full text-sm text-left
+    @apply min-w-full text-sm text-left text-black;
 }
-
 table.index thead>tr {
-    @apply tracking-wider uppercase border-b-2 bg-neutral-50 whitespace-nowrap
+    @apply tracking-wider uppercase bg-gray-100 border-b-2 whitespace-nowrap;
 }
-
 table.index tbody>tr {
-    @apply border-b hover:bg-neutral-100
+    @apply border-b hover:bg-gray-300;
 }
-
 table.index tbody>tr:nth-child(even) {
-    @apply bg-neutral-50
+    @apply bg-gray-200 hover:bg-gray-300;
+}
+table.index td, table.index th {
+    @apply px-6 py-4;
 }
 
-table.index td, table.index th {
-    @apply px-6 py-4
+form.view {
+    @apply max-w-sm pb-4 mx-auto;
+}
+form.view > div {
+    @apply mb-5;
+}
+form.view label {
+    @apply block mb-2 text-sm font-medium text-gray-900 dark:text-white;
+}
+form.view input, textarea, select {
+    @apply mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm
+        rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
+        dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+        dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+}
+form.view textarea {
+    @apply h-32
+}
+form.view button[type="submit"] {
+    @apply text-white bg-blue-500 hover:bg-blue-700
+        focus:ring-4 focus:outline-none focus:ring-blue-300
+        font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center
+        dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+}
+
+div.alert-info, div.alert-success, div.alert-warning, div.alert-danger, div.alert-error, div.alert {
+    @apply p-4 mb-4 text-sm font-medium rounded-lg;
+}
+div.alert-info {
+    @apply text-blue-800 bg-blue-100 dark:text-blue-400 dark:bg-gray-700;
+}
+div.alert-success {
+    @apply text-green-800 bg-green-100 dark:text-green-400 dark:bg-gray-700;
+}
+div.alert-warning {
+    @apply text-yellow-800 bg-yellow-100 dark:text-yellow-300 dark:bg-gray-700;
+}
+div.alert-danger, div.alert-error {
+    @apply text-red-800 bg-red-100 dark:text-red-400 dark:bg-gray-700;
+}
+div.alert {
+    @apply text-gray-800 bg-gray-100 dark:text-gray-300 dark:bg-gray-700;
 }

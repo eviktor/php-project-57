@@ -25,7 +25,15 @@
             <x-navigation />
         </header>
 
-        <section class="{{ $contentClass ?? "px-4 pt-4" }}">
+        <section class="{{ $contentClass ?? "main" }}">
+            @if (flash()->message)
+                <x-flash-message type="{{ flash()->class }}" message="{{ flash()->message }}" />
+            @endif
+            @hasSection('header'))
+                <h1 class="mb-2 text-center">
+                    @yield('header')
+                </h1>
+            @endif
             @yield('content')
         </section>
     </div>
