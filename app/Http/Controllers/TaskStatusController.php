@@ -38,9 +38,8 @@ class TaskStatusController extends Controller
 
         $status = new TaskStatus($validatedData);
         $status->save();
-        return redirect()
-            ->route('task_statuses.index')
-            ->with('success', __('Task status created successfully'));
+        flash(__('Task status created successfully'), 'success');
+        return redirect()->route('task_statuses.index');
     }
 
     /**
@@ -69,9 +68,8 @@ class TaskStatusController extends Controller
 
         $task_status->fill($validatedData);
         $task_status->save();
-        return redirect()
-            ->route('task_statuses.index')
-            ->with('success', __('Task status updated successfully'));
+        flash(__('Task status updated successfully'), 'success');
+        return redirect()->route('task_statuses.index');
     }
 
     /**
@@ -80,8 +78,7 @@ class TaskStatusController extends Controller
     public function destroy(TaskStatus $task_status)
     {
         $task_status->delete();
-        return redirect()
-            ->route('task_statuses.index')
-            ->with('success', __('Task status removed successfully'));
+        flash(__('Task status removed successfully'), 'success');
+        return redirect()->route('task_statuses.index');
     }
 }

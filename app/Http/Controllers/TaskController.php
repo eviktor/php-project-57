@@ -12,7 +12,7 @@ class TaskController extends Controller
      */
     public function index(Request $request)
     {
-        $tasks = Task::paginate();
+        $tasks = Task::paginate(10);
         $inputName = $request->input('name');
 
         return view('task.index', compact('tasks', 'inputName'));
@@ -43,9 +43,8 @@ class TaskController extends Controller
         $user = auth()->user();
         $task = $user->tasks()->make($validatedData);
         $task->save();
-        return redirect()
-            ->route('tasks.index')
-            ->with('success', __('Task created successfully'));
+        flash(__('Task created successfully'), 'success');
+        return redirect()->route('tasks.index');
     }
 
     /**
@@ -78,9 +77,8 @@ class TaskController extends Controller
 
         $task->fill($validatedData);
         $task->save();
-        return redirect()
-            ->route('tasks.index')
-            ->with('success', __('Task updated successfully'));
+        flash(__('Task updated successfully'), 'success');
+        return redirect()->route('tasks.index');
     }
 
     /**
@@ -88,9 +86,13 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
+        if ($user = auth()->user()->id !== $task->created_by_id) {
+            flash(__('Only the creator of the task can delete it'), 'error');
+            return redirect()->route('tasks.index');
+        }
+
         $task->delete();
-        return redirect()
-            ->route('tasks.index')
-            ->with('success', __('Task removed successfully'));
+        flash(__('Task removed successfully'), 'success');
+        return redirect()->route('tasks.index');
     }
 }
