@@ -110,7 +110,6 @@
             </a>
             </li>
         </ul>
-        </nav>
-
-    </div> --}}
+        </nav> --}}
+    </div>
 @endsection
