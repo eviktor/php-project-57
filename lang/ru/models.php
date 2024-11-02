@@ -13,5 +13,11 @@ return [
         'status' => 'Статус',
         'assigned_to' => 'Исполнитель',
         'created_by' => 'Автор'
+    ],
+    'label' => [
+        'id' => 'ID',
+        'name' => 'Имя',
+        'description' => 'Описание',
+        'created_at' => 'Дата создания'
     ]
 ];

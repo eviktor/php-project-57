@@ -40,12 +40,12 @@
                         {{ __('Statuses') }}
                     </a>
                 </li>
-                {{-- <li>
-                    <a href="/labels"
+                <li>
+                    <a href="{{ route('labels.index') }}"
                         class="block py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700 dark:text-white dark:hover:text-blue-300 lg:p-0">
                         {{ __('Labels') }}
                     </a>
-                </li> --}}
+                </li>
             </ul>
         </div>
         @endauth

@@ -51,6 +51,10 @@
     "Edit Status": "Изменение статуса",
     "View Status": "Просмотр статуса",
 
+    "Create Label": "Создать метку",
+    "Edit Label": "Изменение метки",
+    "View Label": "Просмотр метки",
+
     "Actions": "Действия",
 
     "Task created successfully": "Задача успешно создана",
@@ -62,6 +66,11 @@
     "Task status updated successfully": "Статус успешно изменён",
     "Cannot delete status": "Не удалось удалить статус",
     "Task status removed successfully": "Статус успешно удалён",
+
+    "Label created successfully": "Метка успешно создана",
+    "Label updated successfully": "Метка успешно изменена",
+    "Cannot delete label": "Не удалось удалить метку",
+    "Label removed successfully": "Метка успешно удалена",
 
     "New": "Новый",
     "In Progress": "В работе",

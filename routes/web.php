@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LabelController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\TaskStatusController;
@@ -23,6 +24,9 @@ Route::resource('task_statuses', TaskStatusController::class)
     ->middleware('auth');
 
 Route::resource('tasks', TaskController::class)
+    ->middleware('auth');
+
+Route::resource('labels', LabelController::class)
     ->middleware('auth');
 
 require __DIR__.'/auth.php';

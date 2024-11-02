@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Label;
 use App\Models\Task;
 use App\Models\TaskStatus;
 use App\Models\User;
@@ -31,6 +32,8 @@ class DatabaseSeeder extends Seeder
                 ['name' => 'Complete'],
             )
             ->create();
+
+        Label::factory()->count(10)->create();
 
         Task::factory()->count(10)->create([
             'created_by_id' => $userId

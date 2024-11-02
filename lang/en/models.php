@@ -12,5 +12,11 @@ return [
         'status' => 'Status',
         'assigned_to' => 'Assigned To',
         'created_by' => 'Created By'
+    ],
+    'label' => [
+        'id' => 'ID',
+        'name' => 'Name',
+        'description' => 'Description',
+        'created_at' => 'Created'
     ]
 ];
