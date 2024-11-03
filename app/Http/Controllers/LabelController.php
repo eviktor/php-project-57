@@ -13,9 +13,7 @@ class LabelController extends Controller
     public function index(Request $request)
     {
         $labels = Label::orderBy('id')->paginate(10);
-        $inputName = $request->input('name');
-
-        return view('label.index', compact('labels', 'inputName'));
+        return view('label.index', compact('labels'));
     }
 
     /**

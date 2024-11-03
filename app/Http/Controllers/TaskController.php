@@ -13,9 +13,8 @@ class TaskController extends Controller
     public function index(Request $request)
     {
         $tasks = Task::orderBy('id')->paginate(10);
-        $inputName = $request->input('name');
 
-        return view('task.index', compact('tasks', 'inputName'));
+        return view('task.index', compact('tasks'));
     }
 
     /**

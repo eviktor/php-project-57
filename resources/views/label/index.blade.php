@@ -10,12 +10,6 @@
             {{ __('Create Label') }}
         </a>
     </div>
-    <div class="hidden mt-2">
-        {{  html()->form('GET', route('labels.index'))->open() }}
-                {{  html()->input('text', 'name', $inputName) }}
-                {{  html()->submit('Search') }}
-        {{ html()->form()->close() }}
-    </div>
 
     <!-- Table responsive wrapper -->
     <div class="mt-2 index-container">

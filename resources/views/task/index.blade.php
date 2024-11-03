@@ -11,9 +11,7 @@
         </a>
     </div>
     <div class="hidden mt-2">
-        {{  html()->form('GET', route('tasks.index'))->open() }}
-                {{  html()->input('text', 'name', $inputName) }}
-                {{  html()->submit('Search') }}
+        {{ html()->form('GET', route('tasks.index'))->open() }}
         {{ html()->form()->close() }}
     </div>
 
