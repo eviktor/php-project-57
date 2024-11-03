@@ -5,8 +5,8 @@
 @endsection
 
 @section('content')
-    <div class="mt-2 ml-1">
-        <a class="no-underline" href="{{ route('labels.create') }}">
+    <div class="mb-4 ml-1">
+        <a class="link-button" href="{{ route('labels.create') }}">
             {{ __('Create Label') }}
         </a>
     </div>

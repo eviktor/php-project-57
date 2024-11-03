@@ -41,7 +41,7 @@ form.view > div {
     @apply mb-5;
 }
 form.view label {
-    @apply block mb-2 text-sm font-medium text-gray-900 dark:text-white;
+    @apply block text-sm font-medium text-gray-900 dark:text-white;
 }
 form.view input, textarea, select {
     @apply mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm
@@ -59,10 +59,9 @@ form.view textarea {
     @apply h-32
 }
 form.view button[type="submit"] {
-    @apply text-white bg-blue-500 hover:bg-blue-700
-        focus:ring-4 focus:outline-none focus:ring-blue-300
-        font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center
-        dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+    @apply w-full px-4 py-2 font-bold text-center text-white bg-blue-500 rounded
+        hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 sm:w-auto
+        dark:bg-blue-500 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
 }
 
 span.badge {
@@ -87,4 +86,11 @@ div.alert-danger, div.alert-error {
 }
 div.alert {
     @apply text-gray-800 bg-gray-100 dark:text-gray-300 dark:bg-gray-700;
+}
+
+.link-button {
+    @apply px-4 py-2 font-bold text-white no-underline bg-blue-500 rounded hover:bg-blue-700;
+}
+.menu-button {
+    @apply block py-2 pl-3 pr-4 text-gray-700 lg:p-0 hover:text-blue-700 dark:text-white dark:hover:text-blue-400;
 }

@@ -5,8 +5,8 @@
 @endsection
 
 @section('content')
-    <div class="mt-2 ml-1">
-        <a class="no-underline" href="{{ route('tasks.create') }}">
+    <div class="mb-4 ml-1">
+        <a class="link-button" href="{{ route('tasks.create') }}">
             {{ __('Create Task') }}
         </a>
     </div>
