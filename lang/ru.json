@@ -76,5 +76,8 @@
     "New": "Новый",
     "In Progress": "В работе",
     "In Testing": "На тестировании",
-    "Complete": "Завершен"
+    "Complete": "Завершен",
+
+    "The password field must be at least 8 characters.": "Пароль должен иметь длину не менее 8 символов",
+    "The password field confirmation does not match.": "Пароль и подтверждение не совпадают"
 }
