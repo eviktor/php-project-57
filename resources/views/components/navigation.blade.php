@@ -5,25 +5,24 @@
         </a>
         <div class="flex items-center lg:order-2">
             @guest
-            <a href="{{ route('login') }}" class="link-button">
-                {{ __('Log in') }}
-            </a>
-            <a href="{{ route('register') }}" class="ml-2 link-button">
-                {{ __('Register')  }}
-            </a>
+                <a href="{{ route('login') }}" class="link-button">
+                    {{ __('Log in') }}
+                </a>
+                <a href="{{ route('register') }}" class="ml-2 link-button">
+                    {{ __('Register')  }}
+                </a>
             @endguest
             @auth
-            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                class="ml-2 link-button">
-                {{ __('Log out') }}
-            </a>
-            <form id="logout-form" method="POST" action="{{ route('logout') }}" class="hidden">
-                @csrf
-            </form>
+                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                    class="ml-2 link-button">
+                    {{ __('Log out') }}
+                </a>
+                <form id="logout-form" method="POST" action="{{ route('logout') }}" class="hidden">
+                    @csrf
+                </form>
             @endauth
         </div>
 
-        @auth
         <div class="items-center justify-between w-full lg:flex lg:w-auto lg:order-1">
             <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                 <li>
@@ -43,6 +42,5 @@
                 </li>
             </ul>
         </div>
-        @endauth
     </div>
 </nav>

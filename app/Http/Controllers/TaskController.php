@@ -97,7 +97,7 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        if (auth()->user()->id !== $task->created_by_id) {
+        if (auth()->user()?->id !== $task->created_by_id) {
             flash(__('Only the creator of the task can delete it'), 'error');
         } else {
             $task->delete();

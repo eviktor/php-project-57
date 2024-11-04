@@ -7,9 +7,11 @@
 @section('content')
     <div class="flex items-start w-full">
         <div class="ml-1">
-            <a class="filter-button" href="{{ route('tasks.create') }}">
-                {{ __('Create Task') }}
-            </a>
+            @auth
+                <a class="filter-button" href="{{ route('tasks.create') }}">
+                    {{ __('Create Task') }}
+                </a>
+            @endauth
         </div>
         <div class="flex ml-auto">
             {{ html()->form('GET', route('tasks.index'))->class('filter')->open() }}
@@ -47,7 +49,9 @@
                     <th scope="col">@lang('models.task.name')</th>
                     <th scope="col">@lang('models.task.created_by')</th>
                     <th scope="col">@lang('models.task.assigned_to')</th>
-                    <th scope="col">{{ __('Actions') }}</th>
+                    @auth
+                        <th scope="col">{{ __('Actions') }}</th>
+                    @endauth
                 </tr>
             </thead>
             <!-- Table body -->
@@ -63,8 +67,9 @@
                         </th>
                         <td scope="row">{{ $task->created_by->name }}</td>
                         <td scope="row">{{ $task->assigned_to?->name }}</td>
+                        @auth
                         <td>
-                            @if(auth()->user()->id === $task->created_by_id)
+                            @if(auth()->user()?->id === $task->created_by_id)
                                 <a class="pl-1 text-red-500 no-underline" href="{{route('tasks.destroy', $task->id)}}" data-confirm="{{ __('Are you sure?') }}" data-method="delete">
                                     {{ __('Delete') }}
                                 </a>
@@ -73,6 +78,7 @@
                                 {{ __('Edit') }}
                             </a>
                         </td>
+                        @endauth
                     </tr>
                 @endforeach
             </tbody>

@@ -6,9 +6,11 @@
 
 @section('content')
     <div class="flex mb-4 ml-1">
-        <a class="filter-button" href="{{ route('task_statuses.create') }}">
-            {{ __('Create Status') }}
-        </a>
+        @auth
+            <a class="filter-button" href="{{ route('task_statuses.create') }}">
+                {{ __('Create Status') }}
+            </a>
+        @endauth
     </div>
 
     <!-- Table responsive wrapper -->
@@ -21,7 +23,9 @@
                     <th scope="col">@lang('models.task_status.id')</th>
                     <th scope="col">@lang('models.task_status.name')</th>
                     <th scope="col">@lang('models.task_status.created_at')</th>
-                    <th scope="col">{{ __('Actions') }}</th>
+                    @auth
+                        <th scope="col">{{ __('Actions') }}</th>
+                    @endauth
                 </tr>
             </thead>
             <!-- Table body -->
@@ -37,14 +41,16 @@
                         <td>
                             {{ __($status->created_at->format('Y-m-d')) }}
                         </td>
-                        <td>
-                            <a class="text-red-500 no-underline" href="{{route('task_statuses.destroy', $status->id)}}" data-confirm="{{ __('Are you sure?') }}" data-method="delete">
-                                {{ __('Delete') }}
-                            </a>
-                            <a class="pl-1 text-blue-500 no-underline" href="{{route('task_statuses.edit', $status->id)}}">
-                                {{ __('Edit') }}
-                            </a>
-                        </td>
+                        @auth
+                            <td>
+                                <a class="text-red-500 no-underline" href="{{route('task_statuses.destroy', $status->id)}}" data-confirm="{{ __('Are you sure?') }}" data-method="delete">
+                                    {{ __('Delete') }}
+                                </a>
+                                <a class="pl-1 text-blue-500 no-underline" href="{{route('task_statuses.edit', $status->id)}}">
+                                    {{ __('Edit') }}
+                                </a>
+                            </td>
+                        @endauth
                     </tr>
                 @endforeach
             </tbody>

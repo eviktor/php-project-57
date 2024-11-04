@@ -21,12 +21,21 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('task_statuses', TaskStatusController::class)
+    ->only('index', 'show');
+Route::resource('task_statuses', TaskStatusController::class)
+    ->except('index', 'show')
     ->middleware('auth');
 
 Route::resource('tasks', TaskController::class)
+    ->only('index', 'show');
+Route::resource('tasks', TaskController::class)
+    ->except('index', 'show')
     ->middleware('auth');
 
 Route::resource('labels', LabelController::class)
+    ->only('index', 'show');
+Route::resource('labels', LabelController::class)
+    ->except('index', 'show')
     ->middleware('auth');
 
 require __DIR__.'/auth.php';

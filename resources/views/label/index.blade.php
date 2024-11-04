@@ -6,9 +6,11 @@
 
 @section('content')
     <div class="flex mb-4 ml-1">
-        <a class="filter-button" href="{{ route('labels.create') }}">
-            {{ __('Create Label') }}
-        </a>
+        @auth
+            <a class="filter-button" href="{{ route('labels.create') }}">
+                {{ __('Create Label') }}
+            </a>
+        @endauth
     </div>
 
     <!-- Table responsive wrapper -->
@@ -22,7 +24,9 @@
                     <th scope="col">@lang('models.label.name')</th>
                     <th scope="col">@lang('models.label.description')</th>
                     <th scope="col">@lang('models.label.created_at')</th>
-                    <th scope="col">{{ __('Actions') }}</th>
+                    @auth
+                        <th scope="col">{{ __('Actions') }}</th>
+                    @endauth
                 </tr>
             </thead>
             <!-- Table body -->
@@ -37,14 +41,16 @@
                         </th>
                         <td>{{ Str::limit($label->description, 50) }}</td>
                         <td>{{ $label->created_at->format('Y-m-d') }}</td>
-                        <td>
-                            <a class="text-red-500 no-underline" href="{{route('labels.destroy', $label->id)}}" data-confirm="{{ __('Are you sure?') }}" data-method="delete">
-                                {{ __('Delete') }}
-                            </a>
-                            <a class="pl-1 text-blue-500 no-underline" href="{{route('labels.edit', $label->id)}}">
-                                {{ __('Edit') }}
-                            </a>
-                        </td>
+                        @auth
+                            <td>
+                                <a class="text-red-500 no-underline" href="{{route('labels.destroy', $label->id)}}" data-confirm="{{ __('Are you sure?') }}" data-method="delete">
+                                    {{ __('Delete') }}
+                                </a>
+                                <a class="pl-1 text-blue-500 no-underline" href="{{route('labels.edit', $label->id)}}">
+                                    {{ __('Edit') }}
+                                </a>
+                            </td>
+                        @endauth
                     </tr>
                 @endforeach
             </tbody>
