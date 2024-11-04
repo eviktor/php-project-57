@@ -26,10 +26,10 @@ class DatabaseSeeder extends Seeder
         TaskStatus::factory()
             ->count(4)
             ->sequence(
-                ['name' => 'New'],
-                ['name' => 'In Progress'],
-                ['name' => 'In Testing'],
-                ['name' => 'Complete'],
+                ['name' => __('New')],
+                ['name' => __('In Progress')],
+                ['name' => __('In Testing')],
+                ['name' => __('Complete')],
             )
             ->create();
 
