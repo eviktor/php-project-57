@@ -63,7 +63,7 @@ class LabelController extends Controller
     public function update(Request $request, Label $label)
     {
         $validatedData = $request->validate([
-            'name' => 'required|unique:labels',
+            'name' => 'required|unique:labels,name,' . $label->id,
             'description' => ''
         ]);
 

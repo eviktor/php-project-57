@@ -61,7 +61,7 @@ class TaskStatusController extends Controller
     public function update(Request $request, TaskStatus $task_status)
     {
         $validatedData = $request->validate([
-            'name' => 'required|unique:task_statuses'
+            'name' => 'required|unique:task_statuses,name,' . $task_status->id,
         ]);
 
         $task_status->fill($validatedData);
