@@ -6,6 +6,7 @@ use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
+use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class TaskController extends Controller implements HasMiddleware
@@ -39,7 +40,11 @@ class TaskController extends Controller implements HasMiddleware
     public function index(Request $request)
     {
         $tasks = QueryBuilder::for(Task::class)
-            ->allowedFilters(['status_id', 'assigned_to_id', 'created_by_id'])
+            ->allowedFilters([
+                AllowedFilter::exact('status_id'),
+                AllowedFilter::exact('assigned_to_id'),
+                AllowedFilter::exact('created_by_id')
+            ])
             ->paginate();
         $filter = $request->query('filter');
 
