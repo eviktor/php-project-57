@@ -15,10 +15,10 @@
         <span class="font-bold">{{ __('models.task.status') }}:</span> {{ $task->status->name }}
     </p>
     <p class="mt-2 ml-1">
-        <span class="font-bold">{{ __('models.task.assigned_to') }}:</span> {{ $task->assigned_to?->name }}
+        <span class="font-bold">{{ __('models.task.assigned_to') }}:</span> {{ $task->assignedTo?->name }}
     </p>
     <p class="mt-2 ml-1">
-        <span class="font-bold">{{ __('models.task.created_by') }}:</span> {{ $task->created_by->name }}
+        <span class="font-bold">{{ __('models.task.created_by') }}:</span> {{ $task->createdBy->name }}
     </p>
     <p class="mt-2 ml-1">
         <span class="font-bold">{{ __('models.task.labels') }}:</span>

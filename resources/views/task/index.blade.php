@@ -65,8 +65,8 @@
                                 {{ $task->name }}
                             </a>
                         </th>
-                        <td scope="row">{{ $task->created_by->name }}</td>
-                        <td scope="row">{{ $task->assigned_to?->name }}</td>
+                        <td scope="row">{{ $task->createdBy->name }}</td>
+                        <td scope="row">{{ $task->assignedTo?->name }}</td>
                         <td scope="row">{{ $task->created_at->format('d.m.Y') }}</td>
                         @auth
                         <td>
