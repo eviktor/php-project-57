@@ -49,6 +49,7 @@
                     <th scope="col">@lang('models.task.name')</th>
                     <th scope="col">@lang('models.task.created_by')</th>
                     <th scope="col">@lang('models.task.assigned_to')</th>
+                    <th scope="col">@lang('models.task.created_at')</th>
                     @auth
                         <th scope="col">{{ __('Actions') }}</th>
                     @endauth
@@ -67,6 +68,7 @@
                         </th>
                         <td scope="row">{{ $task->created_by->name }}</td>
                         <td scope="row">{{ $task->assigned_to?->name }}</td>
+                        <td scope="row">{{ $task->created_at->format('d.m.Y') }}</td>
                         @auth
                         <td>
                             @if(auth()->user()?->id === $task->created_by_id)

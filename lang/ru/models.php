@@ -13,6 +13,7 @@ return [
         'status' => 'Статус',
         'assigned_to' => 'Исполнитель',
         'created_by' => 'Автор',
+        'created_at' => 'Дата создания',
         'labels' => 'Метки',
     ],
     'label' => [
