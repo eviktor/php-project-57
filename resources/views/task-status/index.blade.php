@@ -39,7 +39,7 @@
                             </a>
                         </th>
                         <td>
-                            {{ __($status->created_at->format('Y-m-d')) }}
+                            {{ __($status->created_at->format('d.m.Y')) }}
                         </td>
                         @auth
                             <td>

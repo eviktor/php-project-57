@@ -40,7 +40,7 @@
                             </a>
                         </th>
                         <td>{{ Str::limit($label->description, 100) }}</td>
-                        <td>{{ $label->created_at->format('Y-m-d') }}</td>
+                        <td>{{ $label->created_at->format('d.m.Y') }}</td>
                         @auth
                             <td>
                                 <a class="text-red-500 no-underline" href="{{route('labels.destroy', $label->id)}}" data-confirm="{{ __('Are you sure?') }}" data-method="delete">
