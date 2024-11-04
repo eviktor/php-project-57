@@ -9,7 +9,7 @@
         <div class="ml-1">
             @auth
                 <a class="filter-button" href="{{ route('tasks.create') }}">
-                    {{ __('Create Task') }}
+                    {{ __('views.task.create') }}
                 </a>
             @endauth
         </div>

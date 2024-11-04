@@ -8,7 +8,7 @@
     <div class="flex mb-4 ml-1">
         @auth
             <a class="filter-button" href="{{ route('labels.create') }}">
-                {{ __('Create Label') }}
+                {{ __('views.label.create') }}
             </a>
         @endauth
     </div>

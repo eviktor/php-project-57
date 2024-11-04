@@ -20,6 +20,19 @@ class LabelController extends Controller implements HasMiddleware
     }
 
     /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'name.required' => __('views.label.name_required'),
+            'name.unique' => __('views.label.name_unique'),
+        ];
+    }
+
+    /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
@@ -45,11 +58,11 @@ class LabelController extends Controller implements HasMiddleware
         $validatedData = $request->validate([
             'name' => 'required|unique:labels',
             'description' => ''
-        ]);
+        ], $this->messages());
 
         $label = new Label($validatedData);
         $label->save();
-        flash(__('Label created successfully'), 'success');
+        flash(__('views.label.created'), 'success');
         return redirect()->route('labels.index');
     }
 
@@ -77,11 +90,11 @@ class LabelController extends Controller implements HasMiddleware
         $validatedData = $request->validate([
             'name' => 'required|unique:labels,name,' . $label->id,
             'description' => ''
-        ]);
+        ], $this->messages());
 
         $label->fill($validatedData);
         $label->save();
-        flash(__('Label updated successfully'), 'success');
+        flash(__('views.label.updated'), 'success');
         return redirect()->route('labels.index');
     }
 
@@ -91,10 +104,10 @@ class LabelController extends Controller implements HasMiddleware
     public function destroy(Label $label)
     {
         if ($label->tasks()->exists()) {
-            flash(__('Cannot delete label'), 'error');
+            flash(__('views.label.cannot_delete'), 'error');
         } else {
             $label->delete();
-            flash(__('Label removed successfully'), 'success');
+            flash(__('views.label.deleted'), 'success');
         }
 
         return redirect()->route('labels.index');

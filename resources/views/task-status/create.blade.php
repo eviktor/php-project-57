@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('header')
-    {{ __('Create Status') }}
+    {{ __('views.task-status.create') }}
 @endsection
 
 @section('content')

@@ -8,7 +8,7 @@
     <div class="flex mb-4 ml-1">
         @auth
             <a class="filter-button" href="{{ route('task_statuses.create') }}">
-                {{ __('Create Status') }}
+                {{ __('views.task-status.create') }}
             </a>
         @endauth
     </div>

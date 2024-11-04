@@ -20,6 +20,19 @@ class TaskStatusController extends Controller implements HasMiddleware
     }
 
     /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'name.required' => __('views.task-status.name_required'),
+            'name.unique' => __('views.task-status.name_unique'),
+        ];
+    }
+
+    /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
@@ -44,11 +57,11 @@ class TaskStatusController extends Controller implements HasMiddleware
     {
         $validatedData = $request->validate([
             'name' => 'required|unique:task_statuses'
-        ]);
+        ], $this->messages());
 
         $status = new TaskStatus($validatedData);
         $status->save();
-        flash(__('Task status created successfully'), 'success');
+        flash(__('views.task-status.created'), 'success');
         return redirect()->route('task_statuses.index');
     }
 
@@ -74,11 +87,11 @@ class TaskStatusController extends Controller implements HasMiddleware
     {
         $validatedData = $request->validate([
             'name' => 'required|unique:task_statuses,name,' . $task_status->id,
-        ]);
+        ], $this->messages());
 
         $task_status->fill($validatedData);
         $task_status->save();
-        flash(__('Task status updated successfully'), 'success');
+        flash(__('views.task-status.updated'), 'success');
         return redirect()->route('task_statuses.index');
     }
 
@@ -88,10 +101,10 @@ class TaskStatusController extends Controller implements HasMiddleware
     public function destroy(TaskStatus $task_status)
     {
         if ($task_status->tasks()->exists()) {
-            flash(__('Cannot delete status'), 'error');
+            flash(__('views.task-status.cannot_delete'), 'error');
         } else {
             $task_status->delete();
-            flash(__('Task status removed successfully'), 'success');
+            flash(__('views.task-status.deleted'), 'success');
         }
 
         return redirect()->route('task_statuses.index');

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('header')
-    {{ __('Create Label') }}
+    {{ __('views.label.create') }}
 @endsection
 
 @section('content')
