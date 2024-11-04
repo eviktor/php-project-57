@@ -45,6 +45,7 @@ class TaskController extends Controller implements HasMiddleware
                 AllowedFilter::exact('assigned_to_id'),
                 AllowedFilter::exact('created_by_id')
             ])
+            ->with('status', 'assignedTo', 'createdBy')
             ->paginate();
         $filter = $request->query('filter');
 
