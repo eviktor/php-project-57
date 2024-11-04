@@ -5,8 +5,8 @@
 @endsection
 
 @section('content')
-    <div class="mb-4 ml-1">
-        <a class="link-button" href="{{ route('labels.create') }}">
+    <div class="flex mb-4 ml-1">
+        <a class="filter-button" href="{{ route('labels.create') }}">
             {{ __('Create Label') }}
         </a>
     </div>

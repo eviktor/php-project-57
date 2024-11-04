@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class TaskController extends Controller
 {
@@ -12,9 +13,12 @@ class TaskController extends Controller
      */
     public function index(Request $request)
     {
-        $tasks = Task::orderBy('id')->paginate(10);
+        $tasks = QueryBuilder::for(Task::class)
+            ->allowedFilters(['status_id', 'assigned_to_id', 'created_by_id'])
+            ->paginate();
+        $filter = $request->query('filter');
 
-        return view('task.index', compact('tasks'));
+        return view('task.index', compact('tasks', 'filter'));
     }
 
     /**

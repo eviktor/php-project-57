@@ -37,31 +37,32 @@ table.index td, table.index th {
 form.view {
     @apply max-w-sm pb-4 mx-auto;
 }
-form.view > div {
+form.filter {
+    @apply flex max-w-5xl pb-1;
+}
+form:is(.view, .filter) > div {
     @apply mb-5;
 }
-form.view label {
+form:is(.view, .filter) label {
     @apply block text-sm font-medium text-gray-900 dark:text-white;
 }
-form.view input, textarea, select {
-    @apply mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm
+form:is(.view, .filter) input, textarea, select, select[multiple] {
+    @apply mb-2 bg-gray-50 border border-gray-300 text-gray-900 h-auto
         rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
         dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
         dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
 }
-form.view select[multiple] {
-    @apply h-32 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-        focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700
-        dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
-        dark:focus:ring-blue-500 dark:focus:border-blue-500;
+form:is(.view, .filter) select[multiple] {
+    @apply h-32;
 }
-form.view textarea {
+form:is(.view, .filter) textarea {
     @apply h-32
 }
-form.view button[type="submit"] {
-    @apply w-full px-4 py-2 font-bold text-center text-white bg-blue-500 rounded
-        hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 sm:w-auto
-        dark:bg-blue-500 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+form:is(.view, .filter) button[type="submit"] {
+    @apply w-full px-4 py-2 font-bold text-center text-white bg-blue-500 rounded whitespace-nowrap hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 sm:w-auto dark:bg-blue-500 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+}
+form.filter button[type="submit"] {
+    @apply max-h-full mb-2.5;
 }
 
 span.badge {
@@ -88,9 +89,12 @@ div.alert {
     @apply text-gray-800 bg-gray-100 dark:text-gray-300 dark:bg-gray-700;
 }
 
-.link-button {
-    @apply px-4 py-2 font-bold text-white no-underline bg-blue-500 rounded hover:bg-blue-700;
+.link-button, .filter-button {
+    @apply px-4 py-2 font-bold text-white no-underline bg-blue-500 rounded hover:bg-blue-700 whitespace-nowrap;
+}
+.filter-button {
+    @apply block py-2.5;
 }
 .menu-button {
-    @apply block py-2 pl-3 pr-4 text-gray-700 lg:p-0 hover:text-blue-700 dark:text-white dark:hover:text-blue-400;
+    @apply block py-2 pl-3 pr-4 text-gray-700 lg:p-0 hover:text-blue-700 dark:text-white dark:hover:text-blue-400 whitespace-nowrap;
 }

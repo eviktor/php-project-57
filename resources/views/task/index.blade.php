@@ -5,18 +5,38 @@
 @endsection
 
 @section('content')
-    <div class="mb-4 ml-1">
-        <a class="link-button" href="{{ route('tasks.create') }}">
-            {{ __('Create Task') }}
-        </a>
-    </div>
-    <div class="hidden mt-2">
-        {{ html()->form('GET', route('tasks.index'))->open() }}
-        {{ html()->form()->close() }}
+    <div class="flex items-start w-full">
+        <div class="ml-1">
+            <a class="filter-button" href="{{ route('tasks.create') }}">
+                {{ __('Create Task') }}
+            </a>
+        </div>
+        <div class="flex ml-auto">
+            {{ html()->form('GET', route('tasks.index'))->class('filter')->open() }}
+
+            {{ html()->select('filter[status_id]')
+                ->options(\App\Models\TaskStatus::all()->pluck('name', 'id')
+                    ->map(fn ($name) => __($name))
+                    ->prepend(__('Status'), ''))
+                ->class('w-36')
+                ->value($filter['status_id'] ?? '') }}
+
+            {{ html()->select('filter[created_by_id]')
+                ->options(\App\Models\User::all()->pluck('name', 'id')->prepend(__('models.task.created_by'), ''))
+                ->value($filter['created_by_id'] ?? '') }}
+
+            {{ html()->select('filter[assigned_to_id]')
+                ->options(\App\Models\User::all()->pluck('name', 'id')->prepend(__('models.task.assigned_to'), ''))
+                ->value($filter['assigned_to_id'] ?? '') }}
+
+            {{ html()->submit(__('Apply')) }}
+
+            {{ html()->form()->close() }}
+        </div>
     </div>
 
     <!-- Table responsive wrapper -->
-    <div class="mt-2 index-container">
+    <div class="index-container">
         <!-- Table -->
         <table class="index">
             <!-- Table head -->
