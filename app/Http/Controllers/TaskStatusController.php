@@ -70,7 +70,8 @@ class TaskStatusController extends Controller implements HasMiddleware
      */
     public function show(TaskStatus $task_status)
     {
-        return view('task-status.show', compact('task_status'));    }
+        return view('task-status.show', compact('task_status'));
+    }
 
     /**
      * Show the form for editing the specified resource.

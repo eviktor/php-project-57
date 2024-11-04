@@ -10,7 +10,8 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -51,7 +52,7 @@ class User extends Authenticatable
         return $this->hasMany(Task::class, "created_by_id");
     }
 
-    public function assigned_tasks()
+    public function assignedTasks()
     {
         return $this->hasMany(Task::class, 'assigned_to_id');
     }
