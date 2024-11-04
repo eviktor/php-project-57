@@ -18,7 +18,6 @@
 
             {{ html()->select('filter[status_id]')
                 ->options(\App\Models\TaskStatus::all()->pluck('name', 'id')
-                    ->map(fn ($name) => __($name))
                     ->prepend(__('Status'), ''))
                 ->class('w-36')
                 ->value($filter['status_id'] ?? '') }}
@@ -60,10 +59,10 @@
                 @foreach($tasks as $task)
                     <tr>
                         <td>{{$task->id}}</td>
-                        <td scope="row" class="whitespace-nowrap">{{ __($task->status->name) }}</td>
+                        <td scope="row" class="whitespace-nowrap">{{ $task->status->name }}</td>
                         <th scope="row">
                             <a class="no-underline" href="{{route('tasks.show', $task->id)}}">
-                                {{ __($task->name) }}
+                                {{ $task->name }}
                             </a>
                         </th>
                         <td scope="row">{{ $task->created_by->name }}</td>

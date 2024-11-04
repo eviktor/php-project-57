@@ -16,7 +16,7 @@
 
     {{  html()->label(__('models.task.status'), 'status_id') }}
     {{  html()->select('status_id')
-            ->options(\App\Models\TaskStatus::all()->pluck('name', 'id')->map(fn ($name) => __($name))->prepend('', ''))
+            ->options(\App\Models\TaskStatus::all()->pluck('name', 'id')->prepend('', ''))
             ->value($task->status_id) }}
 
     {{  html()->label(__('models.task.assigned_to'), 'assigned_to') }}

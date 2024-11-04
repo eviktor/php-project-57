@@ -36,7 +36,7 @@
                         <td>{{$label->id}}</td>
                         <th scope="row">
                             <a class="no-underline" href="{{route('labels.show', $label->id)}}">
-                                {{ __($label->name) }}
+                                {{ $label->name }}
                             </a>
                         </th>
                         <td>{{ Str::limit($label->description, 100) }}</td>
@@ -57,7 +57,7 @@
         </table>
 
         <div class="mt-2">
-            {{$labels->links()}}
+            {{ $labels->links() }}
         </div>
     </div>
 @endsection
