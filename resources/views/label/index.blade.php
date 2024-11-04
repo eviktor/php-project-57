@@ -39,7 +39,7 @@
                                 {{ __($label->name) }}
                             </a>
                         </th>
-                        <td>{{ Str::limit($label->description, 50) }}</td>
+                        <td>{{ Str::limit($label->description, 100) }}</td>
                         <td>{{ $label->created_at->format('Y-m-d') }}</td>
                         @auth
                             <td>
