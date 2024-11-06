@@ -21,7 +21,7 @@ class StoreLabelRequest extends FormRequest
      */
     public function rules(): array
     {
-        $updatingCondition = $this->label ? ",name,{$this->label->id}" : '';
+        $updatingCondition = (!is_null($this->label) ? ",name,{$this->label->id}" : '');
         return [
             'name' => "required|string|unique:labels{$updatingCondition}",
             'description' => 'nullable|string'

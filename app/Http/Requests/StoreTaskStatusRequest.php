@@ -21,7 +21,7 @@ class StoreTaskStatusRequest extends FormRequest
      */
     public function rules(): array
     {
-        $updatingCondition = $this->task_status ? ",name,{$this->task_status->id}" : '';
+        $updatingCondition = (!is_null($this->task_status) ? ",name,{$this->task_status->id}" : '');
         return [
             'name' => "required|string|unique:task_statuses{$updatingCondition}",
         ];
