@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreLabelRequest;
 use App\Models\Label;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
@@ -16,19 +17,6 @@ class LabelController extends Controller implements HasMiddleware
     {
         return [
             new Middleware('auth', except: ['index', 'show'])
-        ];
-    }
-
-    /**
-     * Get the error messages for the defined validation rules.
-     *
-     * @return array<string, string>
-     */
-    public function messages(): array
-    {
-        return [
-            'name.required' => __('views.label.name_required'),
-            'name.unique' => __('views.label.name_unique'),
         ];
     }
 
@@ -53,15 +41,9 @@ class LabelController extends Controller implements HasMiddleware
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreLabelRequest $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|unique:labels',
-            'description' => ''
-        ], $this->messages());
-
-        $label = new Label($validatedData);
-        $label->save();
+        Label::create($request->validated());
         flash(__('views.label.created'), 'success');
         return redirect()->route('labels.index');
     }
@@ -85,14 +67,9 @@ class LabelController extends Controller implements HasMiddleware
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Label $label)
+    public function update(StoreLabelRequest $request, Label $label)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|unique:labels,name,' . $label->id,
-            'description' => ''
-        ], $this->messages());
-
-        $label->fill($validatedData);
+        $label->fill($request->validated());
         $label->save();
         flash(__('views.label.updated'), 'success');
         return redirect()->route('labels.index');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTaskRequest;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
@@ -18,19 +19,6 @@ class TaskController extends Controller implements HasMiddleware
     {
         return [
             new Middleware('auth', except: ['index', 'show'])
-        ];
-    }
-
-    /**
-     * Get the error messages for the defined validation rules.
-     *
-     * @return array<string, string>
-     */
-    public function messages(): array
-    {
-        return [
-            'name.required' => __('views.task.name_required'),
-            'status_id.required' => __('views.task.status_required'),
         ];
     }
 
@@ -65,17 +53,10 @@ class TaskController extends Controller implements HasMiddleware
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreTaskRequest $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'description' => '',
-            'status_id' => 'required',
-            'assigned_to_id' => '',
-            'labels' => 'array',
-        ], $this->messages());
-
         $user = auth()->user();
+        $validatedData = $request->validated();
         $task = $user->tasks()->make($validatedData);
         $task->save();
 
@@ -104,16 +85,9 @@ class TaskController extends Controller implements HasMiddleware
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Task $task)
+    public function update(StoreTaskRequest $request, Task $task)
     {
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'description' => '',
-            'status_id' => 'required',
-            'assigned_to_id' => '',
-            'labels' => 'array',
-        ], $this->messages());
-
+        $validatedData = $request->validated();
         $task->fill($validatedData);
         $task->save();
 

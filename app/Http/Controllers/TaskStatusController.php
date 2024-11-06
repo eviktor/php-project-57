@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTaskStatusRequest;
 use App\Models\TaskStatus;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
@@ -16,19 +17,6 @@ class TaskStatusController extends Controller implements HasMiddleware
     {
         return [
             new Middleware('auth', except: ['index', 'show'])
-        ];
-    }
-
-    /**
-     * Get the error messages for the defined validation rules.
-     *
-     * @return array<string, string>
-     */
-    public function messages(): array
-    {
-        return [
-            'name.required' => __('views.task-status.name_required'),
-            'name.unique' => __('views.task-status.name_unique'),
         ];
     }
 
@@ -53,14 +41,9 @@ class TaskStatusController extends Controller implements HasMiddleware
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreTaskStatusRequest $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|unique:task_statuses'
-        ], $this->messages());
-
-        $status = new TaskStatus($validatedData);
-        $status->save();
+        TaskStatus::create($request->validated());
         flash(__('views.task-status.created'), 'success');
         return redirect()->route('task_statuses.index');
     }
@@ -84,13 +67,9 @@ class TaskStatusController extends Controller implements HasMiddleware
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TaskStatus $task_status)
+    public function update(StoreTaskStatusRequest $request, TaskStatus $task_status)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|unique:task_statuses,name,' . $task_status->id,
-        ], $this->messages());
-
-        $task_status->fill($validatedData);
+        $task_status->fill($request->validated());
         $task_status->save();
         flash(__('views.task-status.updated'), 'success');
         return redirect()->route('task_statuses.index');
