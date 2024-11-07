@@ -23,7 +23,7 @@ class StoreLabelRequest extends FormRequest
     {
         $updatingCondition = (!is_null($this->label) ? ",name,{$this->label->id}" : '');
         return [
-            'name' => "required|string|unique:labels{$updatingCondition}",
+            'name' => "required|string|max:255|unique:labels{$updatingCondition}",
             'description' => 'nullable|string'
         ];
     }
@@ -38,6 +38,7 @@ class StoreLabelRequest extends FormRequest
         return [
             'name.required' => __('views.label.name_required'),
             'name.unique' => __('views.label.name_unique'),
+            'name.max' => __('views.label.name_max'),
         ];
     }
 }

@@ -72,4 +72,16 @@ class LabelControllerTest extends TestCase
 
         $this->assertDatabaseMissing('labels', $label->only('id'));
     }
+
+    public function testLongInputs()
+    {
+        $label = Label::create([
+            'name' => str_repeat('a', 256),
+            'description' => str_repeat('a', 1001),
+        ]);
+        $data = $label->only('name', 'description');
+        $response = $this->post(route('labels.store'), $data);
+        $response->assertStatus(302);
+        $response->assertSessionHasErrors('name');
+    }
 }
