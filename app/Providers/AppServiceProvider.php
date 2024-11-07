@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Label;
+use App\Policies\LabelPolicy;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,5 +25,9 @@ class AppServiceProvider extends ServiceProvider
         if (config('app.https_force')) {
             \URL::forceScheme('https');
         }
+
+        Gate::guessPolicyNamesUsing(function (string $modelClass) {
+            return 'App\Policies\\' . class_basename($modelClass) . 'Policy';
+        });
     }
 }
