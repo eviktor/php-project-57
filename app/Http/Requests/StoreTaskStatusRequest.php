@@ -23,7 +23,7 @@ class StoreTaskStatusRequest extends FormRequest
     {
         $updatingCondition = (!is_null($this->task_status) ? ",name,{$this->task_status->id}" : '');
         return [
-            'name' => "required|string|unique:task_statuses{$updatingCondition}",
+            'name' => "required|string|max:255|unique:task_statuses{$updatingCondition}",
         ];
     }
 
@@ -37,6 +37,7 @@ class StoreTaskStatusRequest extends FormRequest
         return [
             'name.required' => __('views.task-status.name_required'),
             'name.unique' => __('views.task-status.name_unique'),
+            'name.max' => __('views.task-status.name_max'),
         ];
     }
 }

@@ -72,4 +72,15 @@ class TaskStatusControllerTest extends TestCase
 
         $this->assertDatabaseMissing('task_statuses', $task_status->only('id'));
     }
+
+    public function testLongInputs()
+    {
+        $status = TaskStatus::create([
+            'name' => str_repeat('a', 256),
+        ]);
+        $data = $status->only('name');
+        $response = $this->post(route('task_statuses.store'), $data);
+        $response->assertStatus(302);
+        $response->assertSessionHasErrors('name');
+    }
 }
