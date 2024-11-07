@@ -7,11 +7,11 @@
 @section('content')
     <div class="flex items-start w-full">
         <div class="ml-1">
-            @auth
+            @can('create', \App\Models\Task::class)
                 <a class="filter-button" href="{{ route('tasks.create') }}">
                     {{ __('views.task.create') }}
                 </a>
-            @endauth
+            @endcan
         </div>
         <div class="flex ml-auto">
             {{ html()->form('GET', route('tasks.index'))->class('filter')->open() }}
@@ -70,14 +70,16 @@
                         <td scope="row">{{ $task->created_at->format('d.m.Y') }}</td>
                         @auth
                         <td>
-                            @if(auth()->user()?->id === $task->created_by_id)
+                            @can('delete', $task)
                                 <a class="pl-1 text-red-500 no-underline" href="{{route('tasks.destroy', $task->id)}}" data-confirm="{{ __('Are you sure?') }}" data-method="delete">
                                     {{ __('Delete') }}
                                 </a>
-                            @endif
-                            <a class="text-blue-500 no-underline" href="{{route('tasks.edit', $task->id)}}">
-                                {{ __('Edit') }}
-                            </a>
+                            @endcan
+                            @can('update', $task)
+                                <a class="text-blue-500 no-underline" href="{{route('tasks.edit', $task->id)}}">
+                                    {{ __('Edit') }}
+                                </a>
+                            @endcan
                         </td>
                         @endauth
                     </tr>

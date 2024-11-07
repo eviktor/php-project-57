@@ -18,7 +18,7 @@ class TaskStatusPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(?User $user, TaskStatus $taskStatus): bool
+    public function view(?User $user, TaskStatus $task_status): bool
     {
         return true;
     }
@@ -34,7 +34,7 @@ class TaskStatusPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, TaskStatus $taskStatus): bool
+    public function update(User $user, TaskStatus $task_status): bool
     {
         return true;
     }
@@ -42,15 +42,15 @@ class TaskStatusPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, TaskStatus $taskStatus): bool
+    public function delete(User $user, TaskStatus $task_status): bool
     {
-        return true;
+        return !$task_status->tasks()->exists();
     }
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, TaskStatus $taskStatus): bool
+    public function restore(User $user, TaskStatus $task_status): bool
     {
         return true;
     }
@@ -58,7 +58,7 @@ class TaskStatusPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, TaskStatus $taskStatus): bool
+    public function forceDelete(User $user, TaskStatus $task_status): bool
     {
         return true;
     }

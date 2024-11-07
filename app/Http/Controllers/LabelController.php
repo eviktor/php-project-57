@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreLabelRequest;
 use App\Models\Label;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class LabelController extends Controller
 {
@@ -73,11 +74,11 @@ class LabelController extends Controller
      */
     public function destroy(Label $label)
     {
-        if ($label->tasks()->exists()) {
-            flash(__('views.label.cannot_delete'), 'error');
-        } else {
+        if (Gate::allows('delete', $label)) {
             $label->delete();
             flash(__('views.label.deleted'), 'success');
+        } else {
+            flash(__('views.label.cannot_delete'), 'error');
         }
 
         return redirect()->route('labels.index');

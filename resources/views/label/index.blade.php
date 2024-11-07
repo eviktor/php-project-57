@@ -6,11 +6,11 @@
 
 @section('content')
     <div class="flex mb-4 ml-1">
-        @auth
+        @can('create', \App\Models\Label::class)
             <a class="filter-button" href="{{ route('labels.create') }}">
                 {{ __('views.label.create') }}
             </a>
-        @endauth
+        @endcan
     </div>
 
     <!-- Table responsive wrapper -->
@@ -41,16 +41,18 @@
                         </th>
                         <td>{{ Str::limit($label->description, 100) }}</td>
                         <td>{{ $label->created_at->format('d.m.Y') }}</td>
-                        @auth
-                            <td>
+                        <td>
+                            @can('delete', $label)
                                 <a class="text-red-500 no-underline" href="{{route('labels.destroy', $label->id)}}" data-confirm="{{ __('Are you sure?') }}" data-method="delete">
                                     {{ __('Delete') }}
                                 </a>
+                            @endcan
+                            @can('update', $label)
                                 <a class="pl-1 text-blue-500 no-underline" href="{{route('labels.edit', $label->id)}}">
                                     {{ __('Edit') }}
                                 </a>
-                            </td>
-                        @endauth
+                            @endcan
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

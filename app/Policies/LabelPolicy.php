@@ -44,7 +44,7 @@ class LabelPolicy
      */
     public function delete(User $user, Label $label): bool
     {
-        return true;
+        return !$label->tasks()->exists();
     }
 
     /**

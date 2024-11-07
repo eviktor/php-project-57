@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTaskRequest;
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
@@ -95,11 +96,11 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        if (auth()->user()?->id !== $task->created_by_id) {
-            flash(__('views.task.cannot_delete'), 'error');
-        } else {
-            $task->delete();
+        if (Gate::allows('delete', $task)) {
             flash(__('views.task.deleted'), 'success');
+            $task->delete();
+        } else {
+            flash(__('views.task.cannot_delete'), 'error');
         }
 
         return redirect()->route('tasks.index');

@@ -6,11 +6,11 @@
 
 @section('content')
     <div class="flex mb-4 ml-1">
-        @auth
+        @can('create', \App\Models\TaskStatus::class)
             <a class="filter-button" href="{{ route('task_statuses.create') }}">
                 {{ __('views.task-status.create') }}
             </a>
-        @endauth
+        @endcan
     </div>
 
     <!-- Table responsive wrapper -->
@@ -41,16 +41,18 @@
                         <td>
                             {{ $status->created_at->format('d.m.Y') }}
                         </td>
-                        @auth
-                            <td>
+                        <td>
+                            @can('delete', $status)
                                 <a class="text-red-500 no-underline" href="{{route('task_statuses.destroy', $status->id)}}" data-confirm="{{ __('Are you sure?') }}" data-method="delete">
                                     {{ __('Delete') }}
-                                </a>
+                            </a>
+                            @endcan
+                            @can('update', $status)
                                 <a class="pl-1 text-blue-500 no-underline" href="{{route('task_statuses.edit', $status->id)}}">
                                     {{ __('Edit') }}
                                 </a>
-                            </td>
-                        @endauth
+                            @endcan
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

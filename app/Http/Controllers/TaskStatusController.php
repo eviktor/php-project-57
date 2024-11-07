@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTaskStatusRequest;
 use App\Models\TaskStatus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class TaskStatusController extends Controller
 {
@@ -73,11 +74,11 @@ class TaskStatusController extends Controller
      */
     public function destroy(TaskStatus $task_status)
     {
-        if ($task_status->tasks()->exists()) {
-            flash(__('views.task-status.cannot_delete'), 'error');
-        } else {
+        if (Gate::allows('delete', $task_status)) {
             $task_status->delete();
             flash(__('views.task-status.deleted'), 'success');
+        } else {
+            flash(__('views.task-status.cannot_delete'), 'error');
         }
 
         return redirect()->route('task_statuses.index');
