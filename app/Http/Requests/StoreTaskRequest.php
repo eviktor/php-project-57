@@ -22,7 +22,7 @@ class StoreTaskRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string',
+            'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'status_id' => 'required|exists:task_statuses,id',
             'assigned_to_id' => 'nullable|exists:users,id',
@@ -40,6 +40,7 @@ class StoreTaskRequest extends FormRequest
     {
         return [
             'name.required' => __('views.task.name_required'),
+            'name.max' => __('views.task.name_max'),
             'status_id.required' => __('views.task.status_required'),
         ];
     }

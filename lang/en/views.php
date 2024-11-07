@@ -8,6 +8,7 @@ return [
     ],
     'task' => [
         'name_required' => 'Name is required',
+        'name_max' => 'Name is too long, exceeding 255 characters',
         'status_required' => 'Status is required',
 
         'created' => 'Task created successfully',
@@ -22,7 +23,7 @@ return [
     'task-status' => [
         'name_required' => 'Name is required',
         'name_unique' => 'Status name already exists',
-        'name_max' => 'Status name is too long, exeeding 255 characters',
+        'name_max' => 'Name is too long, exceeding 255 characters',
 
         'created' => 'Status created successfully',
         'updated' => 'Status updated successfully',
@@ -36,7 +37,7 @@ return [
     'label' => [
         'name_required' => 'Name is required',
         'name_unique' => 'Label name already exists',
-        'name_max' => 'Label name is too long, exeeding 255 characters',
+        'name_max' => 'Name is too long, exceeding 255 characters',
 
         'created' => 'Label created successfully',
         'updated' => 'Label updated successfully',
