@@ -82,5 +82,4 @@ class TaskControllerTest extends TestCase
         $response->assertStatus(302);
         $response->assertSessionHasErrors('name');
     }
-
 }

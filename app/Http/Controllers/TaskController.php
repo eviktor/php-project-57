@@ -5,23 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTaskRequest;
 use App\Models\Task;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controllers\HasMiddleware;
-use Illuminate\Routing\Controllers\Middleware;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
-class TaskController extends Controller implements HasMiddleware
+class TaskController extends Controller
 {
-    /**
-     * Get the middleware that should be assigned to the controller.
-     */
-    public static function middleware(): array
-    {
-        return [
-            new Middleware('auth', except: ['index', 'show'])
-        ];
-    }
-
     /**
      * Display a listing of the resource.
      */
